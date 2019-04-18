@@ -25,7 +25,7 @@ class Leer_Fichero{
         
         try {
             //Constructor de FileReader() lanza excepción de FileNotFoundException
-            FileReader entrada = new FileReader("file.txt");
+            FileReader entrada = new FileReader("file.txt"); //No olvidar cerrar el archivo
             
             int c = entrada.read();
             
@@ -33,8 +33,13 @@ class Leer_Fichero{
             while(c != -1){
                 c = entrada.read();
                 
-                System.out.println(c);
+                char letra = (char)c;
+                
+                System.out.print(letra);
             }
+            
+            
+            entrada.close(); // cerrar el flujo
             
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
