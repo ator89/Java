@@ -3,6 +3,7 @@ package leyendo;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +14,8 @@ import java.util.logging.Logger;
 public class Acceso_Fichero {
     
     public static void main(String[] args){
-        
+        Leer_Fichero acceder = new Leer_Fichero();
+        acceder.lee();
     }
     
 }
@@ -22,10 +24,22 @@ class Leer_Fichero{
     public void lee(){
         
         try {
-            //Constructor de FileReader lanza excepción de FileNotFoundException
-            FileReader entrada = new FileReader("/file.txt");
+            //Constructor de FileReader() lanza excepción de FileNotFoundException
+            FileReader entrada = new FileReader("file.txt");
+            
+            int c = entrada.read();
+            
+            //repetir mientras no se llegue al final del archivo
+            while(c != -1){
+                c = entrada.read();
+                
+                System.out.println(c);
+            }
+            
         } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
