@@ -10,6 +10,9 @@ public class Node {
     private int data;
 
     public Node() {
+        next = null;
+        previous = null;
+        data = 0;
     }
 
     public Node getNext() {
